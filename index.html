@@ -22,7 +22,9 @@
             padding: 20px;
         }
         header video {
-            max-width: 100px;
+            max-width: 200px;
+            width: 100%;
+            border-radius: 10px;
         }
         .content {
             padding: 20px;
@@ -69,11 +71,30 @@
         .socials a:hover {
             color: #FACE5F;
         }
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 5px;
+            }
+        }
+        @media (max-width: 480px) {
+            header {
+                padding: 10px;
+            }
+            .gallery {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+            .forms iframe {
+                max-width: 100%;
+                height: 400px;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <video src="https://i.imgur.com/ODi6zjs.mp4" autoplay loop muted></video>
+        <video src="https://streamable.com/e/f5spza" autoplay loop muted></video>
     </header>
     <div class="content">
         <div class="about">
