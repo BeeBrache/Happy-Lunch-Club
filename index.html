@@ -20,11 +20,16 @@
             background-size: cover;
             background-blend-mode: multiply;
             padding: 20px;
+            position: relative;
+            height: 200px;
         }
-        header video {
-            max-width: 200px;
+        header iframe {
             width: 100%;
-            border-radius: 10px;
+            height: 100%;
+            border: none;
+            position: absolute;
+            left: 0;
+            top: 0;
         }
         .content {
             padding: 20px;
@@ -71,6 +76,10 @@
         .socials a:hover {
             color: #FACE5F;
         }
+        .socials img {
+            width: 24px;
+            height: 24px;
+        }
         @media (max-width: 768px) {
             .gallery {
                 grid-template-columns: repeat(2, 1fr);
@@ -80,6 +89,7 @@
         @media (max-width: 480px) {
             header {
                 padding: 10px;
+                height: 150px;
             }
             .gallery {
                 grid-template-columns: 1fr;
@@ -94,7 +104,7 @@
 </head>
 <body>
     <header>
-        <video src="https://streamable.com/e/f5spza" autoplay loop muted></video>
+        <iframe src="https://streamable.com/e/f5spza" frameborder="0" allowfullscreen></iframe>
     </header>
     <div class="content">
         <div class="about">
@@ -119,12 +129,12 @@
         </div>
         <div class="contact">
             <p>Contact us: <a href="mailto:contact@happyegglunchclub.com">contact@happyegglunchclub.com</a></p>
-            <p><a href="https://wa.me/your_whatsapp_number">WhatsApp us</a></p>
+            <p><a href="https://wa.me/your_+21814580528">WhatsApp us</a></p>
         </div>
         <div class="socials">
-            <a href="https://www.facebook.com/your_page" target="_blank">Facebook</a>
-            <a href="https://www.instagram.com/your_profile" target="_blank">Instagram</a>
-            <a href="https://twitter.com/your_profile" target="_blank">Twitter</a>
+            <a href="https://www.facebook.com/your_page" target="_blank"><img src="path_to_facebook_icon.png" alt="Facebook"></a>
+            <a href="https://www.instagram.com/your_profile" target="_blank"><img src="path_to_instagram_icon.png" alt="Instagram"></a>
+            <a href="https://www.tiktok.com/@your_profile" target="_blank"><img src="path_to_tiktok_icon.png" alt="TikTok"></a>
         </div>
     </div>
 </body>
