@@ -174,31 +174,65 @@
         </div>
         <div id="order-form">
             <h2>Order Form</h2>
-            <form action="https://formspree.io/f/{your_form_id}" method="POST">
+            <form action="https://formspree.io/f/{your_form_id}" method="POST" id="orderForm">
                 <input type="text" name="name" placeholder="Your Name" required>
+                <input type="tel" name="mobile" placeholder="Mobile Number" required>
                 <input type="email" name="email" placeholder="Your Email" required>
-                <select name="day" required>
-                    <option value="">Select Day</option>
-                    <option value="Monday">Monday - Spaghetti Bolognese (R25)</option>
-                    <option value="Tuesday">Tuesday - Coconut Chicken Curry with Rice or Roti (R30)</option>
-                    <option value="Wednesday">Wednesday - Mac n Cheese (R25)</option>
-                    <option value="Thursday">Thursday - Chicken Strips and Fries (R30)</option>
-                    <option value="Friday">Friday - Burger and Fries (R35)</option>
-                </select>
-                <select name="soup" required>
-                    <option value="">Select Soup</option>
-                    <option value="veg_meat">Vegetable and Meat Soup (R15)</option>
-                    <option value="butternut">Butternut Soup (R15)</option>
-                </select>
-                <select name="sandwich" required>
-                    <option value="">Select Sandwich</option>
-                    <option value="chicken_mayo">Chicken Mayo Sandwich (R20)</option>
-                    <option value="tuna_mayo">Tuna Mayo Sandwich (R20)</option>
-                    <option value="cheese_beef">Cheese & Pressed Beef Sandwich (R20)</option>
-                </select>
-                <div class="price">Daily Offering: Fries (R10)</div>
+                <p>Select days and offerings:</p>
+                <label><input type="checkbox" name="days[]" value="Monday"> Monday</label><br>
+                <select name="monday_meal">
+                    <option value="">Select Meal for Monday</option>
+                    <option value="Spaghetti Bolognese">Spaghetti Bolognese (R25)</option>
+                    <option value="Chinese Chicken and Corn Soup">Chinese Chicken and Corn Soup (R15)</option>
+                    <option value="Chicken Mayo Sandwich">Chicken Mayo Sandwich (R20)</option>
+                    <option value="Tuna Mayo Sandwich">Tuna Mayo Sandwich (R20)</option>
+                    <option value="Cheese & Pressed Beef Sandwich">Cheese & Pressed Beef Sandwich (R18)</option>
+                    <option value="Soup and Fries">Soup and Fries (R15 + R10)</option>
+                </select><br>
+                <label><input type="checkbox" name="days[]" value="Tuesday"> Tuesday</label><br>
+                <select name="tuesday_meal">
+                    <option value="">Select Meal for Tuesday</option>
+                    <option value="Coconut Chicken Curry">Coconut Chicken Curry with Rice or Roti (R30)</option>
+                    <option value="Chinese Chicken and Corn Soup">Chinese Chicken and Corn Soup (R15)</option>
+                    <option value="Chicken Mayo Sandwich">Chicken Mayo Sandwich (R20)</option>
+                    <option value="Tuna Mayo Sandwich">Tuna Mayo Sandwich (R20)</option>
+                    <option value="Cheese & Pressed Beef Sandwich">Cheese & Pressed Beef Sandwich (R18)</option>
+                    <option value="Soup and Fries">Soup and Fries (R15 + R10)</option>
+                </select><br>
+                <label><input type="checkbox" name="days[]" value="Wednesday"> Wednesday</label><br>
+                <select name="wednesday_meal">
+                    <option value="">Select Meal for Wednesday</option>
+                    <option value="Mac n Cheese">Mac n Cheese (R25)</option>
+                    <option value="Chinese Chicken and Corn Soup">Chinese Chicken and Corn Soup (R15)</option>
+                    <option value="Chicken Mayo Sandwich">Chicken Mayo Sandwich (R20)</option>
+                    <option value="Tuna Mayo Sandwich">Tuna Mayo Sandwich (R20)</option>
+                    <option value="Cheese & Pressed Beef Sandwich">Cheese & Pressed Beef Sandwich (R18)</option>
+                    <option value="Soup and Fries">Soup and Fries (R15 + R10)</option>
+                </select><br>
+                <label><input type="checkbox" name="days[]" value="Thursday"> Thursday</label><br>
+                <select name="thursday_meal">
+                    <option value="">Select Meal for Thursday</option>
+                    <option value="Chicken Strips and Fries">Chicken Strips and Fries (R30)</option>
+                    <option value="Chinese Chicken and Corn Soup">Chinese Chicken and Corn Soup (R15)</option>
+                    <option value="Chicken Mayo Sandwich">Chicken Mayo Sandwich (R20)</option>
+                    <option value="Tuna Mayo Sandwich">Tuna Mayo Sandwich (R20)</option>
+                    <option value="Cheese & Pressed Beef Sandwich">Cheese & Pressed Beef Sandwich (R18)</option>
+                    <option value="Soup and Fries">Soup and Fries (R15 + R10)</option>
+                </select><br>
+                <label><input type="checkbox" name="days[]" value="Friday"> Friday</label><br>
+                <select name="friday_meal">
+                    <option value="">Select Meal for Friday</option>
+                    <option value="Burger and Fries (Beef)">Burger and Fries (Beef) (R35)</option>
+                    <option value="Burger and Fries (Crispy Chicken)">Burger and Fries (Crispy Chicken) (R35)</option>
+                    <option value="Chinese Chicken and Corn Soup">Chinese Chicken and Corn Soup (R15)</option>
+                    <option value="Chicken Mayo Sandwich">Chicken Mayo Sandwich (R20)</option>
+                    <option value="Tuna Mayo Sandwich">Tuna Mayo Sandwich (R20)</option>
+                    <option value="Cheese & Pressed Beef Sandwich">Cheese & Pressed Beef Sandwich (R18)</option>
+                    <option value="Soup and Fries">Soup and Fries (R15 + R10)</option>
+                </select><br>
                 <textarea name="allergies" placeholder="Any Allergies?" rows="4"></textarea>
                 <textarea name="notes" placeholder="Special Preferences" rows="4"></textarea>
+                <p>Total: <span class="price" id="totalPrice">R0</span></p>
                 <button type="submit">Submit Order</button>
             </form>
         </div>
@@ -214,5 +248,23 @@
         </div>
     </div>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        // Calculate total price based on selections
+        const form = document.getElementById('orderForm');
+        const totalPriceSpan = document.getElementById('totalPrice');
+        
+        form.addEventListener('change', () => {
+            let total = 0;
+            const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+            checkboxes.forEach(checkbox => {
+                const selectedMeal = form.querySelector(`select[name="${checkbox.value.toLowerCase()}_meal"]`).value;
+                if (selectedMeal) {
+                    const price = parseFloat(selectedMeal.match(/\(R([\d.]+)\)/)[1]);
+                    total += price;
+                }
+            });
+            totalPriceSpan.textContent = `R${total}`;
+        });
+    </script>
 </body>
 </html>
