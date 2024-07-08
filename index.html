@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Egg Lunch Club</title>
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rustic+Pantry&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Patrick Hand', cursive;
+            font-family: 'Rustic Pantry', cursive;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -22,7 +22,7 @@
             padding: 20px;
         }
         header video {
-            max-width: 200px;
+            max-width: 400px;
             width: 100%;
             border-radius: 10px;
         }
@@ -51,6 +51,10 @@
             gap: 20px;
             margin: 20px 0;
         }
+        .forms h2 {
+            margin: 0;
+            font-size: 24px;
+        }
         .forms iframe {
             width: 100%;
             max-width: 500px;
@@ -71,6 +75,17 @@
         }
         .socials a:hover {
             color: #FACE5F;
+        }
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+        }
+        nav a:hover {
+            color: #FACE5F;
+        }
+        .instructions {
+            margin: 20px 0;
         }
         @media (max-width: 768px) {
             .gallery {
@@ -97,13 +112,36 @@
     <header>
         <video src="https://happyegg.s3.af-south-1.amazonaws.com/HELC.mp4" autoplay loop muted></video>
     </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#instructions">Savor the Flavor: How to Order</a>
+        <a href="#forms">Order Forms</a>
+        <a href="#gallery">Delicious Displays</a>
+        <a href="#contact">Contact</a>
+    </nav>
     <div class="content">
-        <div class="about">
+        <div id="about" class="about">
             <h1>Welcome to Happy Egg Lunch Club!</h1>
             <p>Started by a food-loving mom on a mission to bring smiles to school kids, we specialize in wholesome, homemade-style lunches. We believe in putting Nutrition First, crafting balanced meals that kids love. Our secret? Fresh, top-notch ingredients and a dash of mom's care in every bite. We're all about safety, community love (local suppliers rock!), and making sure every dietary need is met. Plus, we're eco-warriors—doing our bit for the planet while constantly making our lunches even better. Thanks for being a part of our journey to make lunchtime awesome!</p>
             <p>Every meal ordered goes into a monthly draw to get a free week of lunches.</p>
         </div>
-        <div class="gallery">
+        <div id="instructions" class="instructions">
+            <h2>Savor the Flavor: How to Order</h2>
+            <p>The order is for the week following the form submission but contact me via WhatsApp should you want to make a special arrangement for the same week.</p>
+            <p>The order forms are in the links below.</p>
+            <p>Payment details are on the forms as well as a section to declare allergies.</p>
+            <p>Once I receive the order form and payment confirmation, I will send you a confirmation that I received the order.</p>
+            <p>I will deliver the lunches to school as well as the dinner if ordered.</p>
+        </div>
+        <div id="forms" class="forms">
+            <h2>Order Forms</h2>
+            <h2>Lunch Club</h2>
+            <iframe src="URL_to_weekly_lunch_form"></iframe>
+            <h2>Dinner Club</h2>
+            <iframe src="URL_to_family_dinner_form"></iframe>
+        </div>
+        <div id="gallery" class="gallery">
+            <h2>Delicious Displays</h2>
             <img src="path_to_photo1.jpg" alt="Lunch Photo 1">
             <img src="path_to_photo2.jpg" alt="Lunch Photo 2">
             <img src="path_to_photo3.jpg" alt="Lunch Photo 3">
@@ -114,11 +152,8 @@
             <img src="path_to_photo8.jpg" alt="Lunch Photo 8">
             <img src="path_to_photo9.jpg" alt="Lunch Photo 9">
         </div>
-        <div class="forms">
-            <iframe src="URL_to_weekly_lunch_form"></iframe>
-            <iframe src="URL_to_family_dinner_form"></iframe>
-        </div>
-        <div class="contact">
+        <div id="contact" class="contact">
+            <h2>Contact</h2>
             <p>Contact us: <a href="mailto:contact@happyegglunchclub.com">contact@happyegglunchclub.com</a></p>
             <p><a href="https://wa.me/your_whatsapp_number">WhatsApp us</a></p>
         </div>
