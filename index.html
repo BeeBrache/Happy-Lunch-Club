@@ -19,18 +19,13 @@
             background-color: #FACE5F;
             padding: 20px;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-        }
-        header img {
-            max-width: 100%;
-            height: auto;
         }
         header nav {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             gap: 10px;
-            margin-top: 10px;
         }
         header nav a {
             text-decoration: none;
@@ -47,27 +42,31 @@
         .content {
             padding: 20px;
         }
-        .about {
-            margin: 20px 0;
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin: 20px 0;
-        }
-        .gallery img {
-            width: 100%;
-            height: auto;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .forms {
+        .order-form {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 20px;
             margin: 20px 0;
+        }
+        .day-options {
+            display: none;
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        .day-options.show {
+            display: block;
+        }
+        .day-options label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .total {
+            font-weight: bold;
         }
         .contact {
             margin: 20px 0;
@@ -85,195 +84,190 @@
             color: #FACE5F;
         }
         @media (max-width: 768px) {
-            .gallery {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 5px;
-            }
-        }
-        @media (max-width: 480px) {
             header {
+                flex-direction: column;
                 padding: 10px;
             }
             header nav {
                 margin-top: 10px;
             }
-            .gallery {
-                grid-template-columns: 1fr;
-                gap: 5px;
-            }
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            background-color: #FFF;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        form input[type="text"], form input[type="tel"], form input[type="email"], form textarea {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        form button {
-            padding: 10px 20px;
-            background-color: #FACE5F;
-            border: none;
-            border-radius: 5px;
-            color: #333;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        form button:hover {
-            background-color: #333;
-            color: #FFF;
-        }
-        .price {
-            font-weight: bold;
-            color: #333;
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="header_placeholder.jpg" alt="Header Image" width="2000" height="600">
+        <img src="header-placeholder.jpg" alt="Header Placeholder" class="logo">
         <nav>
             <a href="#about">About</a>
-            <a href="#how-to-order">Savor the Flavor: How to Order</a>
-            <a href="#order-form">Order Form</a>
-            <a href="#gallery">Gallery</a>
+            <a href="#how-to-order">How to Order</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
     <div class="content">
-        <div id="about" class="about">
+        <div id="about">
             <h1>Welcome to Happy Egg Lunch Club!</h1>
             <p>Started by a food-loving mom on a mission to bring smiles to school kids, we specialize in wholesome, homemade-style lunches. We believe in putting Nutrition First, crafting balanced meals that kids love. Our secret? Fresh, top-notch ingredients and a dash of mom's care in every bite. We're all about safety, community love (local suppliers rock!), and making sure every dietary need is met. Plus, we're eco-warriors—doing our bit for the planet while constantly making our lunches even better. Thanks for being a part of our journey to make lunchtime awesome!</p>
             <p>Every meal ordered goes into a monthly draw to get a free week of lunches.</p>
         </div>
-        <div id="gallery" class="gallery">
-            <img src="path_to_photo1.jpg" alt="Lunch Photo 1">
-            <img src="path_to_photo2.jpg" alt="Lunch Photo 2">
-            <img src="path_to_photo3.jpg" alt="Lunch Photo 3">
-            <img src="path_to_photo4.jpg" alt="Lunch Photo 4">
-            <img src="path_to_photo5.jpg" alt="Lunch Photo 5">
-            <img src="path_to_photo6.jpg" alt="Lunch Photo 6">
-            <img src="path_to_photo7.jpg" alt="Lunch Photo 7">
-            <img src="path_to_photo8.jpg" alt="Lunch Photo 8">
-            <img src="path_to_photo9.jpg" alt="Lunch Photo 9">
-        </div>
-        <div id="forms" class="forms">
-            <h2>Savor the Flavor: How to Order</h2>
-            <p>The order is for the week following the form submission, but contact us via WhatsApp if you want to make special arrangements for the same week.</p>
-        </div>
-        <div id="order-form">
-            <h2>Order Form</h2>
-            <form action="https://formspree.io/f/{your_form_id}" method="POST" id="orderForm">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="tel" name="mobile" placeholder="Mobile Number" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <p>Select days and offerings:</p>
-                <label><input type="checkbox" name="days[]" value="Monday"> Monday</label><br>
-                <label><input type="checkbox" name="meals_monday[]" value="Spaghetti Bolognese"> Spaghetti Bolognese (R25)</label><br>
-                <label><input type="checkbox" name="meals_monday[]" value="Veg+Meat Soup"> Veg+Meat Soup (R15)</label><br>
-                <label><input type="checkbox" name="meals_monday[]" value="Butternut Soup"> Butternut Soup (R10)</label><br>
-                <label><input type="checkbox" name="meals_monday[]" value="Chinese Chicken and Corn Soup"> Chinese Chicken and Corn Soup (R15)</label><br>
-                <label><input type="checkbox" name="meals_monday[]" value="Chicken Mayo Wrap"> Chicken Mayo Wrap (R20)</label><br>
-                <label><input type="checkbox" name="meals_monday[]" value="Chicken Mayo Sandwich"> Chicken Mayo Sandwich (R20)</label><br>
-                <label><input type="checkbox" name="meals_monday[]" value="Tuna Mayo Wrap"> Tuna Mayo Wrap (R20)</label><br>
-                <label><input type="checkbox" name="meals_monday[]" value="Tuna Mayo Sandwich"> Tuna Mayo Sandwich (R20)</label><br>
-                <label><input type="checkbox" name="meals_monday[]" value="Cheese & Pressed Beef Sandwich"> Cheese & Pressed Beef Sandwich (R18)</label><br>
-                <label><input type="checkbox" name="meals_monday[]" value="Fries"> Fries (R10)</label><br><br>
+        <div class="order-form" id="how-to-order">
+            <h2>How to Order</h2>
+            <form id="orderForm" action="https://formspree.io/f/{your_form_id}" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+                <label for="mobile">Mobile Number:</label>
+                <input type="tel" id="mobile" name="mobile" required><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
 
-                <label><input type="checkbox" name="days[]" value="Tuesday"> Tuesday</label><br>
-                <label><input type="checkbox" name="meals_tuesday[]" value="Coconut Chicken Curry"> Coconut Chicken Curry with Rice or Roti (R30)</label><br>
-                <label><input type="checkbox" name="meals_tuesday[]" value="Veg+Meat Soup"> Veg+Meat Soup (R15)</label><br>
-                <label><input type="checkbox" name="meals_tuesday[]" value="Butternut Soup"> Butternut Soup (R10)</label><br>
-                <label><input type="checkbox" name="meals_tuesday[]" value="Chinese Chicken and Corn Soup"> Chinese Chicken and Corn Soup (R15)</label><br>
-                <label><input type="checkbox" name="meals_tuesday[]" value="Chicken Mayo Wrap"> Chicken Mayo Wrap (R20)</label><br>
-                <label><input type="checkbox" name="meals_tuesday[]" value="Chicken Mayo Sandwich"> Chicken Mayo Sandwich (R20)</label><br>
-                <label><input type="checkbox" name="meals_tuesday[]" value="Tuna Mayo Wrap"> Tuna Mayo Wrap (R20)</label><br>
-                <label><input type="checkbox" name="meals_tuesday[]" value="Tuna Mayo Sandwich"> Tuna Mayo Sandwich (R20)</label><br>
-                <label><input type="checkbox" name="meals_tuesday[]" value="Cheese & Pressed Beef Sandwich"> Cheese & Pressed Beef Sandwich (R18)</label><br>
-                <label><input type="checkbox" name="meals_tuesday[]" value="Fries"> Fries (R10)</label><br><br>
+                <label for="days">Select Day:</label>
+                <select id="days" name="days">
+                    <option value="monday">Monday</option>
+                    <option value="tuesday">Tuesday</option>
+                    <option value="wednesday">Wednesday</option>
+                    <option value="thursday">Thursday</option>
+                    <option value="friday">Friday</option>
+                </select><br><br>
 
-                <label><input type="checkbox" name="days[]" value="Wednesday"> Wednesday</label><br>
-                <label><input type="checkbox" name="meals_wednesday[]" value="Mac n Cheese"> Mac n Cheese (R28)</label><br>
-                <label><input type="checkbox" name="meals_wednesday[]" value="Veg+Meat Soup"> Veg+Meat Soup (R15)</label><br>
-                <label><input type="checkbox" name="meals_wednesday[]" value="Butternut Soup"> Butternut Soup (R10)</label><br>
-                <label><input type="checkbox" name="meals_wednesday[]" value="Chinese Chicken and Corn Soup"> Chinese Chicken and Corn Soup (R15)</label><br>
-                <label><input type="checkbox" name="meals_wednesday[]" value="Chicken Mayo Wrap"> Chicken Mayo Wrap (R20)</label><br>
-                <label><input type="checkbox" name="meals_wednesday[]" value="Chicken Mayo Sandwich"> Chicken Mayo Sandwich (R20)</label><br>
-                <label><input type="checkbox" name="meals_wednesday[]" value="Tuna Mayo Wrap"> Tuna Mayo Wrap (R20)</label><br>
-                <label><input type="checkbox" name="meals_wednesday[]" value="Tuna Mayo Sandwich"> Tuna Mayo Sandwich (R20)</label><br>
-                <label><input type="checkbox" name="meals_wednesday[]" value="Cheese & Pressed Beef Sandwich"> Cheese & Pressed Beef Sandwich (R18)</label><br>
-                <label><input type="checkbox" name="meals_wednesday[]" value="Fries"> Fries (R10)</label><br><br>
+                <div class="day-options" id="mondayOptions">
+                    <label><input type="checkbox" name="meals_monday[]" value="Spaghetti Bolognese (R35)"> Spaghetti Bolognese (R35)</label><br>
+                    <label><input type="checkbox" name="meals_monday[]" value="Veg+Meat Soup (R15)"> Veg+Meat Soup (R15)</label><br>
+                    <label><input type="checkbox" name="meals_monday[]" value="Butternut Soup (R10)"> Butternut Soup (R10)</label><br>
+                    <label><input type="checkbox" name="meals_monday[]" value="Chinese Chicken and Corn Soup (R15)"> Chinese Chicken and Corn Soup (R15)</label><br>
+                    <label><input type="checkbox" name="meals_monday[]" value="Chicken Mayo Wrap (R20)"> Chicken Mayo Wrap (R20)</label><br>
+                    <label><input type="checkbox" name="meals_monday[]" value="Chicken Mayo Sandwich (R20)"> Chicken Mayo Sandwich (R20)</label><br>
+                    <label><input type="checkbox" name="meals_monday[]" value="Tuna Mayo Wrap (R20)"> Tuna Mayo Wrap (R20)</label><br>
+                    <label><input type="checkbox" name="meals_monday[]" value="Tuna Mayo Sandwich (R20)"> Tuna Mayo Sandwich (R20)</label><br>
+                    <label><input type="checkbox" name="meals_monday[]" value="Cheese & Pressed Beef Sandwich (R18)"> Cheese & Pressed Beef Sandwich (R18)</label><br>
+                    <label><input type="checkbox" name="meals_monday[]" value="Fries (R10)"> Fries (R10)</label><br><br>
+                </div>
 
-                <label><input type="checkbox" name="days[]" value="Thursday"> Thursday</label><br>
-                <label><input type="checkbox" name="meals_thursday[]" value="Chicken Strips and Fries"> Chicken Strips and Fries (R30)</label><br>
-                <label><input type="checkbox" name="meals_thursday[]" value="Veg+Meat Soup"> Veg+Meat Soup (R15)</label><br>
-                <label><input type="checkbox" name="meals_thursday[]" value="Butternut Soup"> Butternut Soup (R10)</label><br>
-                <label><input type="checkbox" name="meals_thursday[]" value="Chinese Chicken and Corn Soup"> Chinese Chicken and Corn Soup (R15)</label><br>
-                <label><input type="checkbox" name="meals_thursday[]" value="Chicken Mayo Wrap"> Chicken Mayo Wrap (R20)</label><br>
-                <label><input type="checkbox" name="meals_thursday[]" value="Chicken Mayo Sandwich"> Chicken Mayo Sandwich (R20)</label><br>
-                <label><input type="checkbox" name="meals_thursday[]" value="Tuna Mayo Wrap"> Tuna Mayo Wrap (R20)</label><br>
-                <label><input type="checkbox" name="meals_thursday[]" value="Tuna Mayo Sandwich"> Tuna Mayo Sandwich (R20)</label><br>
-                <label><input type="checkbox" name="meals_thursday[]" value="Cheese & Pressed Beef Sandwich"> Cheese & Pressed Beef Sandwich (R18)</label><br>
-                <label><input type="checkbox" name="meals_thursday[]" value="Fries"> Fries (R10)</label><br><br>
+                <div class="day-options" id="tuesdayOptions">
+                    <label><input type="checkbox" name="meals_tuesday[]" value="Coconut Chicken Curry with Rice (R40)"> Coconut Chicken Curry with Rice (R40)</label><br>
+                    <label><input type="checkbox" name="meals_tuesday[]" value="Coconut Chicken Curry with Roti (R40)"> Coconut Chicken Curry with Roti (R40)</label><br>
+                    <label><input type="checkbox" name="meals_tuesday[]" value="Veg+Meat Soup (R15)"> Veg+Meat Soup (R15)</label><br>
+                    <label><input type="checkbox" name="meals_tuesday[]" value="Butternut Soup (R10)"> Butternut Soup (R10)</label><br>
+                    <label><input type="checkbox" name="meals_tuesday[]" value="Chinese Chicken and Corn Soup (R15)"> Chinese Chicken and Corn Soup (R15)</label><br>
+                    <label><input type="checkbox" name="meals_tuesday[]" value="Chicken Mayo Wrap (R20)"> Chicken Mayo Wrap (R20)</label><br>
+                    <label><input type="checkbox" name="meals_tuesday[]" value="Chicken Mayo Sandwich (R20)"> Chicken Mayo Sandwich (R20)</label><br>
+                    <label><input type="checkbox" name="meals_tuesday[]" value="Tuna Mayo Wrap (R20)"> Tuna Mayo Wrap (R20)</label><br>
+                    <label><input type="checkbox" name="meals_tuesday[]" value="Tuna Mayo Sandwich (R20)"> Tuna Mayo Sandwich (R20)</label><br>
+                    <label><input type="checkbox" name="meals_tuesday[]" value="Cheese & Pressed Beef Sandwich (R18)"> Cheese & Pressed Beef Sandwich (R18)</label><br>
+                    <label><input type="checkbox" name="meals_tuesday[]" value="Fries (R10)"> Fries (R10)</label><br><br>
+                </div>
 
-                <label><input type="checkbox" name="days[]" value="Friday"> Friday</label><br>
-                <label><input type="checkbox" name="meals_friday[]" value="Burger and Fries (Beef)"> Burger and Fries (Beef) (R43)</label><br>
-                <label><input type="checkbox" name="meals_friday[]" value="Burger and Fries (Crispy Chicken)"> Burger and Fries (Crispy Chicken) (R43)</label><br>
-                <label><input type="checkbox" name="meals_friday[]" value="Veg+Meat Soup"> Veg+Meat Soup (R15)</label><br>
-                <label><input type="checkbox" name="meals_friday[]" value="Butternut Soup"> Butternut Soup (R10)</label><br>
-                <label><input type="checkbox" name="meals_friday[]" value="Chinese Chicken and Corn Soup"> Chinese Chicken and Corn Soup (R15)</label><br>
-                <label><input type="checkbox" name="meals_friday[]" value="Chicken Mayo Wrap"> Chicken Mayo Wrap (R20)</label><br>
-                <label><input type="checkbox" name="meals_friday[]" value="Chicken Mayo Sandwich"> Chicken Mayo Sandwich (R20)</label><br>
-                <label><input type="checkbox" name="meals_friday[]" value="Tuna Mayo Wrap"> Tuna Mayo Wrap (R20)</label><br>
-                <label><input type="checkbox" name="meals_friday[]" value="Tuna Mayo Sandwich"> Tuna Mayo Sandwich (R20)</label><br>
-                <label><input type="checkbox" name="meals_friday[]" value="Cheese & Pressed Beef Sandwich"> Cheese & Pressed Beef Sandwich (R18)</label><br>
-                <label><input type="checkbox" name="meals_friday[]" value="Fries"> Fries (R10)</label><br><br>
+                <div class="day-options" id="wednesdayOptions">
+                    <label><input type="checkbox" name="meals_wednesday[]" value="Mac n Cheese (R28)"> Mac n Cheese (R28)</label><br>
+                    <label><input type="checkbox" name="meals_wednesday[]" value="Veg+Meat Soup (R15)"> Veg+Meat Soup (R15)</label><br>
+                    <label><input type="checkbox" name="meals_wednesday[]" value="Butternut Soup (R10)"> Butternut Soup (R10)</label><br>
+                    <label><input type="checkbox" name="meals_wednesday[]" value="Chinese Chicken and Corn Soup (R15)"> Chinese Chicken and Corn Soup (R15)</label><br>
+                    <label><input type="checkbox" name="meals_wednesday[]" value="Chicken Mayo Wrap (R20)"> Chicken Mayo Wrap (R20)</label><br>
+                    <label><input type="checkbox" name="meals_wednesday[]" value="Chicken Mayo Sandwich (R20)"> Chicken Mayo Sandwich (R20)</label><br>
+                    <label><input type="checkbox" name="meals_wednesday[]" value="Tuna Mayo Wrap (R20)"> Tuna Mayo Wrap (R20)</label><br>
+                    <label><input type="checkbox" name="meals_wednesday[]" value="Tuna Mayo Sandwich (R20)"> Tuna Mayo Sandwich (R20)</label><br>
+                    <label><input type="checkbox" name="meals_wednesday[]" value="Cheese & Pressed Beef Sandwich (R18)"> Cheese & Pressed Beef Sandwich (R18)</label><br>
+                    <label><input type="checkbox" name="meals_wednesday[]" value="Fries (R10)"> Fries (R10)</label><br><br>
+                </div>
 
-                <textarea name="allergies" placeholder="Any Allergies?" rows="4"></textarea><br>
-                <textarea name="notes" placeholder="Special Preferences" rows="4"></textarea><br>
-                <p>Total: <span class="price" id="totalPrice">R0</span></p>
+                <div class="day-options" id="thursdayOptions">
+                    <label><input type="checkbox" name="meals_thursday[]" value="Chicken Strips and Fries (R30)"> Chicken Strips and Fries (R30)</label><br>
+                    <label><input type="checkbox" name="meals_thursday[]" value="Veg+Meat Soup (R15)"> Veg+Meat Soup (R15)</label><br>
+                    <label><input type="checkbox" name="meals_thursday[]" value="Butternut Soup (R10)"> Butternut Soup (R10)</label><br>
+                    <label><input type="checkbox" name="meals_thursday[]" value="Chinese Chicken and Corn Soup (R15)"> Chinese Chicken and Corn Soup (R15)</label><br>
+                    <label><input type="checkbox" name="meals_thursday[]" value="Chicken Mayo Wrap (R20)"> Chicken Mayo Wrap (R20)</label><br>
+                    <label><input type="checkbox" name="meals_thursday[]" value="Chicken Mayo Sandwich (R20)"> Chicken Mayo Sandwich (R20)</label><br>
+                    <label><input type="checkbox" name="meals_thursday[]" value="Tuna Mayo Wrap (R20)"> Tuna Mayo Wrap (R20)</label><br>
+                    <label><input type="checkbox" name="meals_thursday[]" value="Tuna Mayo Sandwich (R20)"> Tuna Mayo Sandwich (R20)</label><br>
+                    <label><input type="checkbox" name="meals_thursday[]" value="Cheese & Pressed Beef Sandwich (R18)"> Cheese & Pressed Beef Sandwich (R18)</label><br>
+                    <label><input type="checkbox" name="meals_thursday[]" value="Fries (R10)"> Fries (R10)</label><br><br>
+                </div>
+
+                <div class="day-options" id="fridayOptions">
+                    <label><input type="checkbox" name="meals_friday[]" value="Burger and Fries - Beef Patty (R35)"> Burger and Fries - Beef Patty (R35)</label><br>
+                    <label><input type="checkbox" name="meals_friday[]" value="Burger and Fries - Crispy Chicken Patty (R35)"> Burger and Fries - Crispy Chicken Patty (R35)</label><br>
+                    <label><input type="checkbox" name="meals_friday[]" value="Veg+Meat Soup (R15)"> Veg+Meat Soup (R15)</label><br>
+                    <label><input type="checkbox" name="meals_friday[]" value="Butternut Soup (R10)"> Butternut Soup (R10)</label><br>
+                    <label><input type="checkbox" name="meals_friday[]" value="Chinese Chicken and Corn Soup (R15)"> Chinese Chicken and Corn Soup (R15)</label><br>
+                    <label><input type="checkbox" name="meals_friday[]" value="Chicken Mayo Wrap (R20)"> Chicken Mayo Wrap (R20)</label><br>
+                    <label><input type="checkbox" name="meals_friday[]" value="Chicken Mayo Sandwich (R20)"> Chicken Mayo Sandwich (R20)</label><br>
+                    <label><input type="checkbox" name="meals_friday[]" value="Tuna Mayo Wrap (R20)"> Tuna Mayo Wrap (R20)</label><br>
+                    <label><input type="checkbox" name="meals_friday[]" value="Tuna Mayo Sandwich (R20)"> Tuna Mayo Sandwich (R20)</label><br>
+                    <label><input type="checkbox" name="meals_friday[]" value="Cheese & Pressed Beef Sandwich (R18)"> Cheese & Pressed Beef Sandwich (R18)</label><br>
+                    <label><input type="checkbox" name="meals_friday[]" value="Fries (R10)"> Fries (R10)</label><br><br>
+                </div>
+
+                <label for="notes">Notes:</label><br>
+                <textarea id="notes" name="notes" rows="4" cols="50"></textarea><br><br>
+
                 <button type="submit">Submit Order</button>
             </form>
+
+            <div class="total" id="total"></div>
         </div>
-        <div id="contact" class="contact">
+
+        <div class="contact" id="contact">
             <h2>Contact</h2>
             <p>Contact us: <a href="mailto:contact@happyegglunchclub.com">contact@happyegglunchclub.com</a></p>
-            <p><a href="https://wa.me/your_whatsapp_number">WhatsApp us</a></p>
+            <p>WhatsApp us: <a href="https://wa.me/your_whatsapp_number">WhatsApp Link</a></p>
         </div>
+
         <div class="socials">
             <a href="https://www.facebook.com/your_page" target="_blank"><i class="fab fa-facebook"></i></a>
             <a href="https://www.instagram.com/your_profile" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://www.tiktok.com/@your_profile" target="_blank"><i class="fab fa-tiktok"></i></a>
         </div>
     </div>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
     <script>
-        // Calculate total price based on selections
-        const form = document.getElementById('orderForm');
-        const totalPriceSpan = document.getElementById('totalPrice');
-        
-        form.addEventListener('change', () => {
-            let total = 0;
-            const checkboxes = form.querySelectorAll('input[type="checkbox"]:checked');
-            checkboxes.forEach(checkbox => {
-                const selectedMeal = checkbox.value;
-                if (selectedMeal) {
-                    const price = parseFloat(selectedMeal.match(/\(R([\d.]+)\)/)[1]);
-                    total += price;
-                }
+        document.getElementById('days').addEventListener('change', function() {
+            var selectedDay = this.value.toLowerCase();
+            var allDayOptions = document.querySelectorAll('.day-options');
+            
+            allDayOptions.forEach(function(option) {
+                option.classList.remove('show');
             });
-            totalPriceSpan.textContent = `R${total}`;
+
+            var selectedDayOptions = document.getElementById(selectedDay + 'Options');
+            if (selectedDayOptions) {
+                selectedDayOptions.classList.add('show');
+            }
+        });
+
+        document.getElementById('orderForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var form = this;
+            var formData = new FormData(form);
+
+            var selectedDay = document.getElementById('days').value.toLowerCase();
+            var selectedDayOptions = document.getElementById(selectedDay + 'Options');
+            var selectedMeals = selectedDayOptions.querySelectorAll('input[type="checkbox"]:checked');
+            
+            var totalPrice = 0;
+            var orderSummary = '';
+
+            selectedMeals.forEach(function(meal) {
+                var mealPrice = parseFloat(meal.value.match(/\(([^)]+)\)/)[1].replace('R', ''));
+                totalPrice += mealPrice;
+                orderSummary += meal.value.split(' (')[0] + '\n';
+            });
+
+            orderSummary += 'Total Price: R' + totalPrice.toFixed(2);
+            document.getElementById('total').textContent = orderSummary;
+
+            fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                form.reset();
+                document.getElementById('total').textContent = '';
+                alert('Your order has been submitted! We will contact you shortly.');
+            }).catch(error => {
+                console.error('Error:', error);
+                alert('There was a problem submitting your order. Please try again later.');
+            });
         });
     </script>
 </body>
