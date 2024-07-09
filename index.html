@@ -17,24 +17,15 @@
         }
         header {
             background-color: #FACE5F;
-            padding: 10px 0;
+            padding: 20px;
             display: flex;
-            flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            position: relative;
-        }
-        .logo {
-            width: 100%;
-            max-width: 1800px;
-            height: auto;
         }
         header nav {
-            margin-top: -20px;
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            position: absolute;
-            bottom: 10px;
+            justify-content: space-between;
+            gap: 10px;
         }
         header nav a {
             text-decoration: none;
@@ -94,19 +85,11 @@
         }
         @media (max-width: 768px) {
             header {
-                padding: 10px 0;
-            }
-            .logo {
-                max-width: 100%;
+                flex-direction: column;
+                padding: 10px;
             }
             header nav {
-                flex-direction: column;
-                margin-top: 0;
-                position: static;
-                gap: 10px;
-            }
-            header nav a {
-                padding: 8px 16px;
+                margin-top: 10px;
             }
         }
     </style>
@@ -128,7 +111,7 @@
         </div>
         <div class="order-form" id="how-to-order">
             <h2>How to Order</h2>
-            <form id="orderForm" action="https://formspree.io/f/xvgpojdg" method="POST">
+            <form id="orderForm" action="YOUR_API_GATEWAY_ENDPOINT" method="POST">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required><br>
                 <label for="mobile">Mobile Number:</label>
@@ -173,7 +156,7 @@
                 </div>
 
                 <div class="day-options" id="wednesdayOptions">
-                    <label><input type="checkbox" name="meals_wednesday[]" value="Chicken A La King with Rice (R35)"> Chicken A La King with Rice (R35)</label><br>
+                    <label><input type="checkbox" name="meals_wednesday[]" value="Pizza (R50)"> Pizza (R50)</label><br>
                     <label><input type="checkbox" name="meals_wednesday[]" value="Veg+Meat Soup (R15)"> Veg+Meat Soup (R15)</label><br>
                     <label><input type="checkbox" name="meals_wednesday[]" value="Butternut Soup (R10)"> Butternut Soup (R10)</label><br>
                     <label><input type="checkbox" name="meals_wednesday[]" value="Chinese Chicken and Corn Soup (R15)"> Chinese Chicken and Corn Soup (R15)</label><br>
@@ -186,8 +169,8 @@
                 </div>
 
                 <div class="day-options" id="thursdayOptions">
-                    <label><input type="checkbox" name="meals_thursday[]" value="Fried Rice (R25)"> Fried Rice (R25)</label><br>
-                    <label><input type="checkbox" name="meals_thursday[]" value="Stew and Rice (R25)"> Stew and Rice (R25)</label><br>
+                    <label><input type="checkbox" name="meals_thursday[]" value="Sweet and Sour Chicken with Rice (R40)"> Sweet and Sour Chicken with Rice (R40)</label><br>
+                    <label><input type="checkbox" name="meals_thursday[]" value="Sweet and Sour Chicken with Roti (R40)"> Sweet and Sour Chicken with Roti (R40)</label><br>
                     <label><input type="checkbox" name="meals_thursday[]" value="Veg+Meat Soup (R15)"> Veg+Meat Soup (R15)</label><br>
                     <label><input type="checkbox" name="meals_thursday[]" value="Butternut Soup (R10)"> Butternut Soup (R10)</label><br>
                     <label><input type="checkbox" name="meals_thursday[]" value="Chinese Chicken and Corn Soup (R15)"> Chinese Chicken and Corn Soup (R15)</label><br>
@@ -200,8 +183,7 @@
                 </div>
 
                 <div class="day-options" id="fridayOptions">
-                    <label><input type="checkbox" name="meals_friday[]" value="Beef Lasagna (R45)"> Beef Lasagna (R45)</label><br>
-                    <label><input type="checkbox" name="meals_friday[]" value="Mac and Cheese (R30)"> Mac and Cheese (R30)</label><br>
+                    <label><input type="checkbox" name="meals_friday[]" value="Biryani with Raita (R50)"> Biryani with Raita (R50)</label><br>
                     <label><input type="checkbox" name="meals_friday[]" value="Veg+Meat Soup (R15)"> Veg+Meat Soup (R15)</label><br>
                     <label><input type="checkbox" name="meals_friday[]" value="Butternut Soup (R10)"> Butternut Soup (R10)</label><br>
                     <label><input type="checkbox" name="meals_friday[]" value="Chinese Chicken and Corn Soup (R15)"> Chinese Chicken and Corn Soup (R15)</label><br>
@@ -213,41 +195,29 @@
                     <label><input type="checkbox" name="meals_friday[]" value="Fries (R10)"> Fries (R10)</label><br><br>
                 </div>
 
-                <input type="submit" value="Submit">
+                <button type="submit">Submit Order</button>
             </form>
         </div>
-
-        <div id="contact" class="contact">
+        <div class="contact" id="contact">
             <h2>Contact Us</h2>
-            <p>If you have any questions or need more information, feel free to reach out to us!</p>
-            <form id="contactForm" action="https://formspree.io/f/xvgpojdg" method="POST">
-                <label for="contactName">Name:</label>
-                <input type="text" id="contactName" name="contactName" required><br>
-                <label for="contactEmail">Email:</label>
-                <input type="email" id="contactEmail" name="contactEmail" required><br>
-                <label for="message">Message:</label><br>
-                <textarea id="message" name="message" rows="4" required></textarea><br>
-                <input type="submit" value="Send">
-            </form>
+            <p>Got questions or feedback? Reach out to us!</p>
+            <p>Email: happyegglunchclub@example.com</p>
+            <p>Phone: +1-123-456-7890</p>
         </div>
-
         <div class="socials">
-            <h2>Follow Us</h2>
-            <a href="https://www.facebook.com/happyegglunchclub" target="_blank">Facebook</a>
-            <a href="https://www.instagram.com/happyegglunchclub" target="_blank">Instagram</a>
-            <a href="https://www.twitter.com/happyegglunch" target="_blank">Twitter</a>
+            <a href="https://facebook.com/happyegglunchclub" target="_blank"><i class="fa fa-facebook"></i></a>
+            <a href="https://twitter.com/happyegglunchclub" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a href="https://instagram.com/happyegglunchclub" target="_blank"><i class="fa fa-instagram"></i></a>
         </div>
     </div>
-
     <script>
+        // Optional: Add JavaScript to toggle visibility of day options based on selected day
         document.getElementById('days').addEventListener('change', function() {
-            var dayOptions = document.querySelectorAll('.day-options');
-            dayOptions.forEach(function(option) {
+            var day = this.value.toLowerCase();
+            document.querySelectorAll('.day-options').forEach(function(option) {
                 option.classList.remove('show');
             });
-
-            var selectedDay = this.value;
-            document.getElementById(selectedDay + 'Options').classList.add('show');
+            document.getElementById(day + 'Options').classList.add('show');
         });
     </script>
 </body>
