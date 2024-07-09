@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Egg Lunch Club</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Fresca&display=swap" rel="stylesheet">
     <style>
         body {
@@ -17,15 +17,25 @@
         }
         header {
             background-color: #FACE5F;
-            padding: 20px;
+            padding: 10px 0;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            position: relative;
+        }
+        .logo {
+            width: 80%;
+            max-width: 400px; /* Adjust max-width as needed */
+            height: auto;
+            margin: 20px; /* Equal margin on all sides */
         }
         header nav {
+            margin-top: -20px;
             display: flex;
-            justify-content: space-between;
-            gap: 10px;
+            justify-content: center;
+            gap: 20px;
+            position: absolute;
+            bottom: 10px;
         }
         header nav a {
             text-decoration: none;
@@ -85,11 +95,19 @@
         }
         @media (max-width: 768px) {
             header {
-                flex-direction: column;
-                padding: 10px;
+                padding: 10px 0;
+            }
+            .logo {
+                max-width: 100%;
             }
             header nav {
-                margin-top: 10px;
+                flex-direction: column;
+                margin-top: 0;
+                position: static;
+                gap: 10px;
+            }
+            header nav a {
+                padding: 8px 16px;
             }
         }
     </style>
@@ -111,7 +129,7 @@
         </div>
         <div class="order-form" id="how-to-order">
             <h2>How to Order</h2>
-            <form id="orderForm" action="YOUR_API_GATEWAY_ENDPOINT" method="POST">
+            <form id="orderForm" action="YOUR_API_INVOKE_URL/submit" method="POST">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required><br>
                 <label for="mobile">Mobile Number:</label>
@@ -156,7 +174,7 @@
                 </div>
 
                 <div class="day-options" id="wednesdayOptions">
-                    <label><input type="checkbox" name="meals_wednesday[]" value="Pizza (R50)"> Pizza (R50)</label><br>
+                    <label><input type="checkbox" name="meals_wednesday[]" value="Lasagna (R40)"> Lasagna (R40)</label><br>
                     <label><input type="checkbox" name="meals_wednesday[]" value="Veg+Meat Soup (R15)"> Veg+Meat Soup (R15)</label><br>
                     <label><input type="checkbox" name="meals_wednesday[]" value="Butternut Soup (R10)"> Butternut Soup (R10)</label><br>
                     <label><input type="checkbox" name="meals_wednesday[]" value="Chinese Chicken and Corn Soup (R15)"> Chinese Chicken and Corn Soup (R15)</label><br>
@@ -169,8 +187,7 @@
                 </div>
 
                 <div class="day-options" id="thursdayOptions">
-                    <label><input type="checkbox" name="meals_thursday[]" value="Sweet and Sour Chicken with Rice (R40)"> Sweet and Sour Chicken with Rice (R40)</label><br>
-                    <label><input type="checkbox" name="meals_thursday[]" value="Sweet and Sour Chicken with Roti (R40)"> Sweet and Sour Chicken with Roti (R40)</label><br>
+                    <label><input type="checkbox" name="meals_thursday[]" value="Chicken Stir Fry with Rice (R40)"> Chicken Stir Fry with Rice (R40)</label><br>
                     <label><input type="checkbox" name="meals_thursday[]" value="Veg+Meat Soup (R15)"> Veg+Meat Soup (R15)</label><br>
                     <label><input type="checkbox" name="meals_thursday[]" value="Butternut Soup (R10)"> Butternut Soup (R10)</label><br>
                     <label><input type="checkbox" name="meals_thursday[]" value="Chinese Chicken and Corn Soup (R15)"> Chinese Chicken and Corn Soup (R15)</label><br>
@@ -183,7 +200,7 @@
                 </div>
 
                 <div class="day-options" id="fridayOptions">
-                    <label><input type="checkbox" name="meals_friday[]" value="Biryani with Raita (R50)"> Biryani with Raita (R50)</label><br>
+                    <label><input type="checkbox" name="meals_friday[]" value="Pizza (R35)"> Pizza (R35)</label><br>
                     <label><input type="checkbox" name="meals_friday[]" value="Veg+Meat Soup (R15)"> Veg+Meat Soup (R15)</label><br>
                     <label><input type="checkbox" name="meals_friday[]" value="Butternut Soup (R10)"> Butternut Soup (R10)</label><br>
                     <label><input type="checkbox" name="meals_friday[]" value="Chinese Chicken and Corn Soup (R15)"> Chinese Chicken and Corn Soup (R15)</label><br>
@@ -195,29 +212,66 @@
                     <label><input type="checkbox" name="meals_friday[]" value="Fries (R10)"> Fries (R10)</label><br><br>
                 </div>
 
+                <label for="eft_confirmation">EFT Confirmation:</label>
+                <input type="text" id="eft_confirmation" name="eft_confirmation" required><br><br>
+
                 <button type="submit">Submit Order</button>
             </form>
         </div>
-        <div class="contact" id="contact">
+        <div id="contact" class="contact">
             <h2>Contact Us</h2>
-            <p>Got questions or feedback? Reach out to us!</p>
-            <p>Email: happyegglunchclub@example.com</p>
-            <p>Phone: +1-123-456-7890</p>
+            <p>For any queries or assistance, contact us via email or WhatsApp:</p>
+            <p>Email: <a href="mailto:happylunchclub@gmail.com">happylunchclub@gmail.com</a></p>
+            <p>WhatsApp: <a href="https://wa.me/27814580528">081 458 0528</a></p>
         </div>
         <div class="socials">
-            <a href="https://facebook.com/happyegglunchclub" target="_blank"><i class="fa fa-facebook"></i></a>
-            <a href="https://twitter.com/happyegglunchclub" target="_blank"><i class="fa fa-twitter"></i></a>
-            <a href="https://instagram.com/happyegglunchclub" target="_blank"><i class="fa fa-instagram"></i></a>
+            <h3>Follow Us for Updates</h3>
+            <a href="https://www.facebook.com/happylunchclub" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/happylunchclub" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
     <script>
-        // Optional: Add JavaScript to toggle visibility of day options based on selected day
         document.getElementById('days').addEventListener('change', function() {
-            var day = this.value.toLowerCase();
-            document.querySelectorAll('.day-options').forEach(function(option) {
-                option.classList.remove('show');
+            const selectedDay = this.value.toLowerCase();
+            const dayOptions = document.querySelectorAll('.day-options');
+            dayOptions.forEach(option => {
+                if (option.id === `${selectedDay}Options`) {
+                    option.classList.add('show');
+                } else {
+                    option.classList.remove('show');
+                }
             });
-            document.getElementById(day + 'Options').classList.add('show');
+        });
+
+        document.getElementById('orderForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            const data = {
+                name: formData.get('name'),
+                mobile: formData.get('mobile'),
+                email: formData.get('email'),
+                days: formData.get('days'),
+                meals_monday: formData.getAll('meals_monday[]'),
+                meals_tuesday: formData.getAll('meals_tuesday[]'),
+                meals_wednesday: formData.getAll('meals_wednesday[]'),
+                meals_thursday: formData.getAll('meals_thursday[]'),
+                meals_friday: formData.getAll('meals_friday[]'),
+                eft_confirmation: formData.get('eft_confirmation')
+            };
+
+            const response = await fetch('YOUR_API_INVOKE_URL/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                alert('Order submitted successfully!');
+            } else {
+                alert('Error submitting order. Please try again.');
+            }
         });
     </script>
 </body>
