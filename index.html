@@ -175,6 +175,183 @@
         <p>Started by a food-loving mom on a mission to bring smiles to school kids, we specialize in wholesome, homemade-style lunches. We believe in putting Nutrition First, crafting balanced meals that kids love. Our secret? Fresh, top-notch ingredients and a dash of mom's care in every bite. We're all about safety, community love (local suppliers rock!), and making sure every dietary need is met. Plus, we're eco-warriors—doing our bit for the planet while constantly making our lunches even better. Thanks for being a part of our journey to make lunchtime awesome!</p>
     </div>
 
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Egg Lunch Club</title>
+    <style>
+        body {
+            font-family: Fresca, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2; /* Light gray background */
+        }
+
+        .site-header {
+            background-color: #faf2bb; /* Light yellow background */
+            color: #333; /* Dark text color */
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            flex: 1;
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
+        }
+
+        .navbar {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.7); /* Transparent white background */
+            text-align: center;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar li {
+            margin: 0 10px;
+        }
+
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: inline-block;
+            background-color: #ddd; /* Light gray background for buttons */
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #555; /* Dark gray background on hover */
+            color: white;
+        }
+
+        #about {
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .order-form {
+            max-width: 600px; /* Limit width of the order form */
+            margin: 50px auto; /* Center the form horizontally */
+            padding: 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .order-form label {
+            display: block;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .order-form input,
+        .order-form select,
+        .order-form textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .order-form textarea {
+            height: 100px;
+        }
+
+        .order-form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .order-form button:hover {
+            background-color: #45a049;
+        }
+
+        .contact {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        .contact a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .contact a img {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+
+        .content {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .content h1 {
+            color: #333;
+        }
+
+        .content p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="logo">
+            <img src="https://happyegg.s3.af-south-1.amazonaws.com/Untitled+design+(3).png" alt="Happy Egg Lunch Club">
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#about">About the Foodie</a></li>
+                <li><a href="#">Order your Lunch</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#"><img src="https://happyegg.s3.af-south-1.amazonaws.com/icons8-paper-bag-80.png" alt="Cart"></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content" id="about">
+        <h1>Welcome to Happy Egg Lunch Club!</h1>
+        <p>Started by a food-loving mom on a mission to bring smiles to school kids, we specialize in wholesome, homemade-style lunches. We believe in putting Nutrition First, crafting balanced meals that kids love. Our secret? Fresh, top-notch ingredients and a dash of mom's care in every bite. We're all about safety, community love (local suppliers rock!), and making sure every dietary need is met. Plus, we're eco-warriors—doing our bit for the planet while constantly making our lunches even better. Thanks for being a part of our journey to make lunchtime awesome!</p>
+    </div>
+
     <div id="order">
         <h2>Order your Lunch</h2>
         <form class="order-form">
@@ -254,6 +431,61 @@
                     <label><input type="checkbox" name="meals_friday[]" value="Fries (R15)"> Fries (R15)</label><br>
                     <button type="button" onclick="addToCart('friday')">Add to Cart</button>
                 </div>
+
+                <label for="notes">Notes:</label>
+                <textarea id="notes" name="notes" rows="4" placeholder="Any special instructions or preferences?"></textarea><br>
+
+                <button type="submit">Checkout</button>
+            </form>
+</div>
+        <div id="contact">
+            <h2>Contact Us</h2>
+            <p>
+                <a href="mailto:happylunchclub@gmail.com"><img src="https://happyegg.s3.af-south-1.amazonaws.com/icons8-paper-plane.gif"/> Email Us</a>
+                <a href="https://wa.me/0814580528"><img src="https://happyegg.s3.af-south-1.amazonaws.com/icons8-whatsapp.gif"/> WhatsApp Us</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Cart Popup -->
+    <div class="cart-popup" id="cartPopup">
+        <div class="cart-content">
+            <!-- Cart details and checkout button -->
+        </div>
+    </div>
+
+    <!-- Yoco Checkout Script -->
+    <script src="https://www.yoco.com/pk_test_50d13f6cmW8YLWPe6d34"></script>
+    <script>
+        // Yoco checkout integration and email order handling
+        function handlePayment() {
+            // Handle Yoco payment logic here
+            // After successful payment, send email with order details
+            const orderDetails = getOrderDetails(); // Replace with function to get order details
+            const userEmail = 'happylunchclub@gmail.com'; // Replace with your email
+
+            // Example using EmailJS (or any other email service)
+            Email.send({
+                Host: "smtp.yoursmtpserver.com",
+                Username: "your_email_address@example.com",
+                Password: "YourPassword",
+                To: `${userEmail}`,
+                From: "you@yourdomain.com",
+                Subject: "New Order Placed",
+                Body: `Order Details: ${orderDetails}`
+            }).then(
+                message => alert("Order sent successfully!")
+            );
+        }
+
+        // Example function to get order details
+        function getOrderDetails() {
+            // Implement logic to retrieve and format order details
+            return "Sample Order Details";
+        }
+    </script>
+</body>
+</html>
 
                 <label for="notes">Notes:</label>
                 <textarea id="notes" name="notes" rows="4" placeholder="Any special instructions or preferences?"></textarea><br>
