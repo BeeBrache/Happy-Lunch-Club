@@ -24,18 +24,20 @@
             position: relative;
         }
         .logo {
-            width: 100%;
-            max-width: 1800px; /* Adjust max-width as needed */
+            width: 100%; /* Make logo width 100% of its container */
+            max-width: 600px; /* Set maximum width as needed */
             height: auto;
-            margin: 7.5px; /* Equal margin on all sides */
+            margin: 20px; /* Equal margin on all sides */
+            box-sizing: border-box;
+            padding: 10px; /* Padding to ensure equal space */
         }
         header nav {
-            margin-top: -7.5px;
+            margin-top: -20px;
             display: flex;
             justify-content: center;
             gap: 20px;
             position: absolute;
-            bottom: 7.5px;
+            bottom: 10px;
         }
         header nav a {
             text-decoration: none;
@@ -93,9 +95,9 @@
         .socials a:hover {
             color: #FACE5F;
         }
-        @media (max-width: 1800px) {
+        @media (max-width: 768px) {
             header {
-                padding: 7.5px 0;
+                padding: 10px 0;
             }
             .logo {
                 max-width: 100%;
@@ -169,7 +171,6 @@
                     <label><input type="checkbox" name="meals_tuesday[]" value="Chicken Mayo Sandwich (R20)"> Chicken Mayo Sandwich (R20)</label><br>
                     <label><input type="checkbox" name="meals_tuesday[]" value="Tuna Mayo Wrap (R20)"> Tuna Mayo Wrap (R20)</label><br>
                     <label><input type="checkbox" name="meals_tuesday[]" value="Tuna Mayo Sandwich (R20)"> Tuna Mayo Sandwich (R20)</label><br>
-                    <label><input type="checkbox" name="meals_tuesday[]" value="Cheese & Pressed Beef Sandwich (R18)"> Cheese & Pressed Beef Sandwich (R18)</label><br>
                     <label><input type="checkbox" name="meals_tuesday[]" value="Fries (R10)"> Fries (R10)</label><br><br>
                 </div>
 
