@@ -3,87 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Lunch Club</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fresca&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Happy Egg Lunch Club</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2; /* Light gray background */
+        }
+
+        .site-header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            flex: 1;
+        }
+
+        .logo img {
+            width: 100%;
+            height: auto;
+        }
+
+        .navbar {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.7); /* Transparent white background */
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar li {
+            margin: 0 20px;
+        }
+
+        .navbar a {
+            color: black;
+            text-decoration: none;
+            padding: 10px 15px;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+            color: white;
+        }
+
+        #order {
+            max-width: 600px; /* Limit width of the order form */
+            margin: 50px auto; /* Center the form horizontally */
+            padding: 20px;
+            background-color: white;
+            text-align: center;
+        }
+
+        .order-form {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .order-form label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .order-form input,
+        .order-form select,
+        .order-form textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .order-form textarea {
+            height: 100px;
+        }
+
+        .order-form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .order-form button:hover {
+            background-color: #45a049;
+        }
+
+        .contact {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        .contact a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .contact a img {
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+    </style>
 </head>
 <body>
     <header class="site-header">
         <div class="logo">
-            <a href="#">
-                <img src="https://happyegg.s3.af-south-1.amazonaws.com/Untitled+design+(3).png" alt="Happy Egg Lunch Club Logo">
-            </a>
+            <img src="https://happyegg.s3.af-south-1.amazonaws.com/Untitled+design+(3).png" alt="Happy Egg Lunch Club">
         </div>
         <nav class="navbar">
             <ul>
-                <li><a href="#about">About the Foodie</a></li>
-                <li><a href="#order">Order Your Lunch</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="#" onclick="openCart()">
-                    <img src="https://happyegg.s3.af-south-1.amazonaws.com/icons8-paper-bag-80.png" alt="Cart Icon"> Cart (<span id="cart-count">0</span>)
-                </a></li>
+                <li><a href="#">About the Foodie</a></li>
+                <li><a href="#">Order your Lunch</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#"><img src="https://happyegg.s3.af-south-1.amazonaws.com/icons8-paper-bag-80.png" alt="Cart"></a></li>
             </ul>
         </nav>
     </header>
 
-    <div class="content">
-        <div id="about">
-            <h1>Welcome to Happy Egg Lunch Club!</h1>
-            <p>Started by a food-loving mom on a mission to bring smiles to school kids, we specialize in wholesome, homemade-style lunches. We believe in putting Nutrition First, crafting balanced meals that kids love. Our secret? Fresh, top-notch ingredients and a dash of mom's care in every bite. We're all about safety, community love (local suppliers rock!), and making sure every dietary need is met. Plus, we're eco-warriors—doing our bit for the planet while constantly making our lunches even better. Thanks for being a part of our journey to make lunchtime awesome!</p>
-        </div>
-        <div id="order">
-            <h2>Order Your Lunch</h2>
-            <form id="orderForm">
-                <!-- Your order form content -->
-            </form>
-        </div>
-        <div id="contact">
-            <h2>Contact Us</h2>
-            <p>
-                <a href="mailto:happylunchclub@gmail.com"><img src="https://happyegg.s3.af-south-1.amazonaws.com/icons8-paper-plane.gif" alt="Email Icon"/> Email Us</a>
-                <a href="https://wa.me/0814580528"><img src="https://happyegg.s3.af-south-1.amazonaws.com/icons8-whatsapp.gif" alt="WhatsApp Icon"/> WhatsApp Us</a>
-            </p>
-        </div>
+    <div id="order">
+        <h2>Order your Lunch</h2>
+        <form class="order-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            <label for="mobile">Mobile:</label>
+            <input type="tel" id="mobile" name="mobile" required><br>
+
+            <label for="days">Select a day:</label>
+            <select id="days" name="days">
+                <option value="">Select a day</option>
+                <option value="monday">Monday</option>
+                <option value="tuesday">Tuesday</option>
+                <option value="wednesday">Wednesday</option>
+                <option value="thursday">Thursday</option>
+                <option value="friday">Friday</option>
+            </select>
+
+            <div class="day-options" id="mondayOptions">
+                <label><input type="checkbox" name="meals_monday[]" value="Spaghetti Bolognese (R25)"> Spaghetti Bolognese (R25)</label><br>
+                <label><input type="checkbox" name="meals_monday[]" value="Meaty Vegetable Soup + Home Baked Bread (R20)"> Meaty Vegetable Soup + Home Baked Bread (R20)</label><br>
+                <label><input type="checkbox" name="meals_monday[]" value="Butternut Soup + Home Baked Bread (R20)"> Butternut Soup + Home Baked Bread (R20)</label><br>
+                <label><input type="checkbox" name="meals_monday[]" value="Chinese Chicken and Corn Soup (R20)"> Chinese Chicken and Corn Soup (R20)</label><br>
+                <label><input type="checkbox" name="meals_monday[]" value="Chicken Mayo Wrap or Sandwich (Specify Wrap or Sandwich in notes) (R20)"> Chicken Mayo Wrap or Sandwich (Specify Wrap or Sandwich in notes) (R20)</label><br>
+                <label><input type="checkbox" name="meals_monday[]" value="Tuna Mayo Wrap or Sandwich (Specify Wrap or Sandwich in notes) (R20)"> Tuna Mayo Wrap or Sandwich (Specify Wrap or Sandwich in notes) (R20)</label><br>
+                <label><input type="checkbox" name="meals_monday[]" value="Cheese & Pressed Beef Sandwich (R15)"> Cheese & Pressed Beef Sandwich (R15)</label><br>
+                <label><input type="checkbox" name="meals_monday[]" value="Fries (R15)"> Fries (R15)</label><br>
+                <button type="button" onclick="addToCart('monday')">Add to Cart</button>
+            </div>
+
+            <!-- Add similar day-options sections for other days -->
+
+            <label for="notes">Notes:</label><br>
+            <textarea id="notes" name="notes" rows="4" cols="50"></textarea><br>
+
+            <button type="submit">Checkout</button>
+        </form>
     </div>
 
-    <!-- Cart Popup -->
-    <div class="cart-popup" id="cartPopup">
-        <div class="cart-content">
-            <h2>Your Cart</h2>
-            <p id="cartDetails">No items in your cart.</p>
-            <p>Total: <span id="cartTotal">0.00</span></p>
-            <button onclick="checkout()">Proceed to Checkout</button>
+    <footer>
+        <div class="contact">
+            <a href="mailto:happylunchclub@gmail.com"><img src="https://happyegg.s3.af-south-1.amazonaws.com/icons8-paper-plane.gif" alt="Email"> Email Us</a>
+            <a href="https://wa.me/0814580528"><img src="https://happyegg.s3.af-south-1.amazonaws.com/icons8-whatsapp.gif" alt="WhatsApp"> WhatsApp Us</a>
         </div>
-    </div>
-
-    <!-- Yoco Checkout Script -->
-    <script src="https://www.yoco.com/pk_test_50d13f6cmW8YLWPe6d34"></script>
-    <script>
-        // Example Yoco checkout integration
-        function checkout() {
-            // Replace with actual Yoco checkout integration
-            alert('Proceeding to checkout...'); // Placeholder action
-        }
-
-        // Example function to open cart popup
-        function openCart() {
-            document.getElementById('cartPopup').style.display = 'block';
-        }
-
-        // Example function to close cart popup
-        function closeCart() {
-            document.getElementById('cartPopup').style.display = 'none';
-        }
-
-        // Example function to update cart details (placeholders)
-        function updateCartDetails(items, total) {
-            document.getElementById('cart-count').textContent = items;
-            document.getElementById('cartTotal').textContent = total.toFixed(2);
-            document.getElementById('cartDetails').textContent = `Items in cart: ${items}`;
-        }
-
-        // Initial cart details (placeholders)
-        updateCartDetails(0, 0);
-    </script>
+    </footer>
 </body>
 </html>
