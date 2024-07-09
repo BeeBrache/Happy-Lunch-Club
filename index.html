@@ -11,22 +11,17 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background-color: #f0f0f0;
+            background-color: #fff9f3;
             color: #333;
         }
         .container {
-            max-width: 900px;
-            margin: 20px auto;
             padding: 20px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border: 1px solid #ccc;
         }
         header {
             background-color: #FACE5F;
-            padding: 0;
+            padding: 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             position: relative;
         }
@@ -38,14 +33,8 @@
         }
         header nav {
             display: flex;
-            justify-content: center;
+            align-items: center;
             gap: 20px;
-            position: absolute;
-            bottom: 10px;
-            background-color: rgba(255, 255, 255, 0.7); /* Add transparency for better readability */
-            padding: 10px 0;
-            width: 100%;
-            box-sizing: border-box;
         }
         header nav a {
             text-decoration: none;
@@ -58,12 +47,21 @@
             color: #FFF;
             background-color: #333;
         }
+        header .cart-icon {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+        }
+        .cart-icon img {
+            width: 24px;
+            height: 24px;
+        }
         .content {
             padding: 20px;
         }
         h1 {
             text-align: center;
-            font-size: 28px;
+            font-size: 36px;
             margin-top: 0;
         }
         form {
@@ -73,7 +71,7 @@
         label {
             margin-bottom: 10px;
         }
-        select, input[type="checkbox"], button {
+        select, input[type="checkbox"], button, input[type="text"], input[type="email"], input[type="tel"] {
             margin-bottom: 20px;
         }
         button {
@@ -132,6 +130,7 @@
                 <a href="#about">About</a>
                 <a href="#order-your-lunch">Order Your Lunch</a>
                 <a href="#contact">Contact</a>
+                <a href="#cart" class="cart-icon"><img src="https://happyegg.s3.af-south-1.amazonaws.com/icons8-paper-bag-80.png"/> Cart</a>
             </nav>
         </header>
         <div class="content">
@@ -142,6 +141,15 @@
             <div id="order-your-lunch">
                 <h1>Order Your Lunch</h1>
                 <form>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="mobile">Mobile:</label>
+                    <input type="tel" id="mobile" name="mobile" required>
+
                     <label for="days">Select Day:</label>
                     <select id="days">
                         <option value="">Select Day</option>
@@ -212,23 +220,25 @@
                         <button type="button" onclick="addToCart('friday')">Add to Cart</button>
                     </div>
                 </form>
-
-                <div id="cart">
-                    <h3>Cart</h3>
-                    <ul id="cartItems"></ul>
-                </div>
+            </div>
+            <div id="cart-page" style="display:none;">
+                <h1>Cart</h1>
+                <ul id="cartItems"></ul>
                 <div id="checkout">
                     <h3>Checkout</h3>
-                    <p>Placeholder for Yoco or PayFast payment gateway</p>
+                    <p>Total: R<span id="totalAmount">0</span></p>
+                    <button id="checkoutButton">Checkout with Yoco</button>
+                    <div id="yocoCheckoutContainer"></div>
                 </div>
             </div>
         </div>
         <div id="contact" class="contact-links">
-            <a href="mailto:youremail@example.com"><img src="https://happyegg.s3.af-south-1.amazonaws.com/icons8-paper-plane.gif"/> Email Us</a>
-            <a href="https://wa.me/1234567890"><img src="https://happyegg.s3.af-south-1.amazonaws.com/icons8-whatsapp.gif"/> WhatsApp Us</a>
+            <a href="mailto:happylunchclub@gmail.com"><img src="https://happyegg.s3.af-south-1.amazonaws.com/icons8-paper-plane.gif"/> Email Us</a>
+            <a href="https://wa.me/0814580528"><img src="https://happyegg.s3.af-south-1.amazonaws.com/icons8-whatsapp.gif"/> WhatsApp Us</a>
         </div>
     </div>
 
+    <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
     <script>
         document.getElementById('days').addEventListener('change', function() {
             var day = this.value;
@@ -241,19 +251,61 @@
             }
         });
 
+        var cart = [];
         function addToCart(day) {
             var options = document.getElementById(day + 'Options');
             var checkboxes = options.querySelectorAll('input[type="checkbox"]:checked');
             var cartItems = document.getElementById('cartItems');
             for (var i = 0; i < checkboxes.length; i++) {
+                var item = {
+                    day: day,
+                    meal: checkboxes[i].value,
+                    price: parseFloat(checkboxes[i].value.match(/\((R\d+)\)/)[1].replace('R', ''))
+                };
+                cart.push(item);
                 var li = document.createElement('li');
-                li.textContent = checkboxes[i].value;
+                li.textContent = item.meal;
                 cartItems.appendChild(li);
                 checkboxes[i].checked = false;
             }
             options.style.display = 'none';
             document.getElementById('days').value = '';
+            updateTotal();
         }
+
+        function updateTotal() {
+            var total = cart.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById('totalAmount').textContent = total.toFixed(2);
+        }
+
+        document.querySelector('.cart-icon').addEventListener('click', function() {
+            document.getElementById('cart-page').style.display = 'block';
+        });
+
+        var yoco = new window.YocoSDK({
+            publicKey: 'pk_test_50d13f6cmW8YLWPe6d34'
+        });
+
+        var checkoutButton = document.querySelector('#checkoutButton');
+        checkoutButton.addEventListener('click', function() {
+            var total = cart.reduce((sum, item) => sum + item.price, 0) * 100; // Convert to cents
+            yoco.showPopup({
+                amountInCents: total,
+                currency: 'ZAR',
+                name: 'Happy Egg Lunch Club',
+                description: 'Lunch Order',
+                callback: function(result) {
+                    if (result.error) {
+                        alert('Error: ' + result.error.message);
+                    } else {
+                        alert('Payment successful!');
+                        cart = [];
+                        document.getElementById('cartItems').innerHTML = '';
+                        updateTotal();
+                    }
+                }
+            });
+        });
     </script>
 </body>
 </html>
