@@ -207,9 +207,8 @@
         }
 
         .cart-content div {
-            border-bottom: 1px solid #ccc;
-            padding: 10px 0;
-        }
+    padding: 10px 0;
+}
 
         .separator {
             border-top: 1px solid #ccc;
@@ -225,17 +224,17 @@
         <nav class="navbar">
             <ul>
                 <li><a href="#about">About the Foodie</a></li>
-                <li><a href="#">Order your Lunch</a></li>
+                <li><a href="#order your lunch">Order your Lunch</a></li>
                 <li><a href="#contact">Get in touch</a></li>
                 <li class="cart-icon-container"><a href="#" onclick="toggleCartPopup()"><img src="https://happyegg.s3.af-south-1.amazonaws.com/icons8-paper-bag-80.png" alt="Cart"><span class="cart-count" id="cartCount">0</span></a></li>
-            </ul>
+            </ul>            
         </nav>
     </header>
 
     <div class="content" id="about">
         <h1>Welcome to Happy Egg Lunch Club!</h1>
         <p>Started by a food-loving mom on a mission to bring smiles to school kids, we specialize in wholesome, homemade-style lunches. We believe in putting Nutrition First, crafting balanced meals that kids love. Our secret? Fresh, top-notch ingredients and a dash of mom's care in every bite. We're all about safety, community love (local suppliers rock!), and making sure every dietary need is met. Plus, we're eco-warriors—doing our bit for the planet while constantly making our lunches even better. Thanks for being a part of our journey to make lunchtime awesome!</p>
-        <div class="container">
+        <div class="container" id="order your lunch">
             <h1>Order your lunch</h1>
             <form>
                 <label for="name">Full Name:</label>
@@ -343,7 +342,7 @@
         <p>Total: <span id="totalAmount">R0.00</span></p>        
     </div>
 
-    <div class="contact">
+    <div class="contact" id="contact">
         <p>Get in touch:</p>
         <p><a href="mailto:happylunchclub@outlook.com"><img src="https://happyegg.s3.af-south-1.amazonaws.com/icons8-outlook-48.png" alt="Email Icon">happylunchclub@outlook.com</a></p>
     </div>
@@ -415,6 +414,14 @@ function updateCheckoutButton(amount) {
             // Implement actual checkout functionality here
             alert(`Total Amount: R${totalAmount.toFixed(2)}\nImplement checkout functionality here.`);
         }
+
+        document.addEventListener('click', function(event) {
+    const cartPopup = document.getElementById('cartPopup');
+    const cartIcon = document.querySelector('.cart-icon-container a');
+    if (!cartPopup.contains(event.target) && !cartIcon.contains(event.target)) {
+        cartPopup.style.display = 'none';
+    }
+});
     </script>
 </body>
 </html>
