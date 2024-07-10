@@ -422,15 +422,19 @@ function updateCheckoutButton(amount) {
 
         function toggleCartPopup() {
             const cartPopup = document.getElementById("cartPopup");
-            cartPopup.style.display = cartPopup.style.display === "block" ? "none" : "block";
+            cartPopup.style.display = cartPopup.style.display === "none" || cartPopup.style.display === "" ? "block" : "none";
         }
 
-        function checkout() {
-            let totalAmount = 0;
+        const yoco = new YocoSDK({
+            publicKey: 'pk_test_50d13f6cmW8YLWPe6d34' // Replace with your actual public key from Yoco Dashboard
+        });
 
-            // Calculate total amount from cart items
+        const checkoutButton = document.getElementById("checkoutButton");
+
+        checkoutButton.addEventListener("click", function () {
+            let totalAmount = 0;
             cart.forEach(item => {
-            totalAmount += item.price;
+                totalAmount += item.price;
             });
 
             // Update checkout button text with total amount
@@ -447,7 +451,7 @@ function updateCheckoutButton(amount) {
     if (!cartPopup.contains(event.target) && !cartIcon.contains(event.target)) {
         cartPopup.style.display = 'none';
     }
-});
-    </script>
+  });
+  </script>
 </body>
 </html>
