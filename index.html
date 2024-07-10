@@ -179,18 +179,19 @@
         }
 
         .add-to-cart-btn, .checkout-btn {
-            background-color: #faf2bb;
-            border: none;
-            color: #4f6067;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 5px 0;
-            cursor: pointer;
-            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 24px;
+    background-color: #faf2bb;
+    border: none;
+    color: #4f6067;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px 0;
+    cursor: pointer;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 24px;
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
         }
 
         .cart-icon-container {
@@ -227,6 +228,18 @@
             border-top: 1px solid #ccc;
             margin: 20px 0;
         }
+
+        .navbar a:active {
+    background-color: #444; /* Darker gray background on click */
+    color: white;
+}
+
+.add-to-cart-btn:active,
+.checkout-btn:active {
+    background-color: #d1c191; /* Darker yellow background on click */
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    transform: scale(0.98); /* Slightly reduce size on click */
+}
     </style>
 </head>
 <body>
