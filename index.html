@@ -603,10 +603,25 @@
             updateCheckoutButton(totalAmount);
         }
 
+        // Load cart items from localStorage
+        function loadCartItems() {
+            const savedItems = localStorage.getItem('cartItems');
+            if (savedItems) {
+                cartItems = JSON.parse(savedItems);
+                updateCartDisplay();
+            }
+        }
+
+        // Save cart items to localStorage
+        function saveCartItems() {
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
+
         function updateCheckoutButton(amount) {
             const checkoutButton = document.getElementById("checkoutButton");
             checkoutButton.innerText = `Checkout - R${amount.toFixed(2)}`;
         }
+
 
         function removeFromCart(index) {
             cart.splice(index, 1);
@@ -620,7 +635,7 @@
         }
 
         const yoco = new YocoSDK({
-            publicKey: 'pk_test_50d13f6cmW8YLWPe6d34' // Replace with your actual public key from Yoco Dashboard
+            publicKey: 'pk_live_95adda0amW8YLWP69044' // Replace with your actual public key from Yoco Dashboard
         });
 
         function checkout() {
