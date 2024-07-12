@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Egg Lunch Club</title>
     <style>
+        /* Global styles */
+
         body {
             font-family: Fresca, sans-serif;
             margin: 0;
@@ -18,7 +20,7 @@
 
         .site-header {
             background-color: #faf2bb;
-            /* Light yellow background */
+            /* Yellow background */
             color: #4f6067;
             /* Dark text color */
             padding: 20px;
@@ -80,7 +82,6 @@
             background-color: #f0f0f0;
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
-
 
         .navbar img {
             height: 24px;
@@ -154,8 +155,8 @@
             text-align: center;
             padding: 10px;
             margin-top: 20px;
-            /* Remove background color */
             background: none;
+            /* Remove background color */
         }
 
         .contact a {
@@ -326,7 +327,6 @@
             transform: scale(0.98);
         }
 
-
         .modal-content {
             background-color: #fff;
             /* White background */
@@ -365,89 +365,109 @@
             margin-top: 20px;
         }
 
+        /* Responsive styles */
+
         @media (max-width: 768px) {
-    .site-header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 10px;
-    }
+            .site-header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 10px;
+            }
 
-    .logo img {
-        width: 80%;
-        height: auto;
-        margin-bottom: 10px; /* Add some space below the logo */
-    }
+            .logo img {
+                width: 80%;
+                height: auto;
+                margin-bottom: 10px;
+                /* Add some space below the logo */
+            }
 
-    .navbar {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 0;
-        margin-top: 10px; /* Add some space above the navbar */
-    }
+            .navbar {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 0;
+                margin-top: 10px;
+                /* Add some space above the navbar */
+            }
 
-    .navbar ul {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        list-style-type: none;
-    }
+            .navbar ul {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                list-style-type: none;
+            }
 
-    .navbar li {
-        width: 100%;
-        text-align: center;
-        margin: 5px 0; /* Add some space between navbar items */
-    }
+            .navbar li {
+                width: 100%;
+                text-align: center;
+                margin: 5px 0;
+                /* Add some space between navbar items */
+            }
 
-    .navbar a {
-        display: block;
-        width: 100%;
-        padding: 10px;
-        text-align: center;
-        text-decoration: none;
-    }
+            .navbar a {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                text-align: center;
+                text-decoration: none;
+            }
 
-    #about, .order-form, form {
-        width: 100%;
-        padding: 10px;
-    }
+            #about,
+            .order-form,
+            form {
+                width: 100%;
+                padding: 10px;
+            }
 
-    .order-form input, .order-form select, .order-form textarea, form input[type="text"], form input[type="email"], form select {
-        width: 100%;
-        padding: 10px;
-        box-sizing: border-box;
-    }
+            .order-form input,
+            .order-form select,
+            .order-form textarea,
+            form input[type="text"],
+            form input[type="email"],
+            form select {
+                width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+            }
 
-    .add-to-cart-btn, .checkout-btn {
-        width: 100%;
-        margin: 10px 0;
-    }
+            .add-to-cart-btn,
+            .checkout-btn {
+                width: 100%;
+                margin: 10px 0;
+            }
 
-    .cart-popup {
-        width: 90%;
-        right: 5%;
-        top: 100px;
-    }
+            .cart-popup {
+                width: 90%;
+                right: 5%;
+                top: 100px;
+            }
 
-    /* Adjust font sizes for better readability */
-    body, h1, h2, h3, h4, h5, h6, p, a {
-        font-size: 16px;
-    }
+            /* Adjust font sizes for better readability */
+            body,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p,
+            a {
+                font-size: 16px;
+            }
 
-    /* Add some padding to the bottom of the page */
-    body {
-        padding-bottom: 50px;
-    }
+            /* Add some padding to the bottom of the page */
+            body {
+                padding-bottom: 50px;
+            }
 
-    /* Ensure navbar buttons are correctly stacked and do not overlap */
-    .navbar {
-        position: relative;
-        top: 0;
-    }
-}
-
+            /* Ensure navbar buttons are correctly stacked and do not overlap */
+            .navbar {
+                position: relative;
+                top: 0;
+            }
+        }
     </style>
     <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
 </head>
