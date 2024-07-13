@@ -6,354 +6,709 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Egg Lunch Club</title>
     <style>
+        /* Global styles */
 /* Global styles */
-
+        body {
 body {
+            font-family: Fresca, sans-serif;
     font-family: Fresca, sans-serif;
+            margin: 0;
     margin: 0;
+            padding: 0;
     padding: 0;
+            background-color: #f2f2f2;
     background-color: #f2f2f2;
+            /* Light gray background */
+            color: #4f6067;
     color: #4f6067;
+            /* Text color */
 }
-
+        }
+        .site-header {
 .site-header {
+            background-color: #faf2bb;
     background-color: #faf2bb;
+            /* Yellow background */
+            color: #4f6067;
     color: #4f6067;
+            /* Dark text color */
+            padding: 20px;
     padding: 20px;
+            display: flex;
     display: flex;
+            justify-content: space-between;
     justify-content: space-between;
+            align-items: center;
     align-items: center;
+            position: relative;
     position: relative;
+        }
 }
-
+        .logo {
 .logo {
+            flex: 1;
     flex: 1;
+        }
 }
-
+        .logo img {
 .logo img {
+            width: 100%;
     width: 100%;
+            height: auto;
     height: auto;
+        }
 }
-
+        .navbar {
 .navbar {
+            position: fixed;
     position: fixed;
+            top: 0;
     top: 0;
+            left: 0;
     left: 0;
+            width: 100%;
     width: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
     background-color: rgba(255, 255, 255, 0.7);
+            text-align: center;
     text-align: center;
+            z-index: 1000;
     z-index: 1000;
+            padding: 10px;
     padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
     display: flex;
+            justify-content: center;
     justify-content: center;
+        }
 }
-
+        .navbar ul {
 .navbar ul {
+            list-style-type: none;
     list-style-type: none;
+            margin: 0;
     margin: 0;
+            padding: 0;
     padding: 0;
+            display: flex;
     display: flex;
+            justify-content: center;
     justify-content: center;
+            align-items: center;
     align-items: center;
+            height: 50px;
     height: 50px;
+        }
 }
-
+        .navbar li {
 .navbar li {
+            margin: 0 15px;
     margin: 0 15px;
+            /* Adjust the spacing between buttons */
 }
-
+        }
+        .navbar a {
 .navbar a {
+            text-decoration: none;
     text-decoration: none;
+            color: #4f6067;
     color: #4f6067;
+            padding: 10px 20px;
     padding: 10px 20px;
+            background-color: #fff;
     background-color: #fff;
+            border-radius: 5px;
     border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
     transition: all 0.3s ease;
+        }
     font-size: 1em; /* Default font size */
 }
-
+        .navbar a:hover {
 .navbar a:hover {
+            background-color: #f0f0f0;
     background-color: #f0f0f0;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
 }
-
+        .navbar img {
 .navbar img {
+            height: 24px;
     height: 24px;
+            /* Same height as text */
 }
-
+        }
+        #about {
 #about {
+            background-color: #fff;
     background-color: #fff;
+            padding: 0 20px;
     padding: 0 20px;
+            /* Remove top and bottom padding, keep left and right padding */
+            margin: 0 auto;
     margin: 0 auto;
+            /* Remove top and bottom margin */
+            max-width: 800px;
     max-width: 800px;
+            text-align: center;
     text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            min-height: calc(100vh - 80px);
     min-height: calc(100vh - 80px);
+            /* Adjust height to fill the page */
+            display: flex;
     display: flex;
+            flex-direction: column;
     flex-direction: column;
+        }
 }
-
+        #main-content {
 #main-content {
+            flex-grow: 1;
     flex-grow: 1;
+            /* Make the main content take up all available space */
+            padding: 20px 0;
     padding: 20px 0;
+            /* Optional: add padding to the main content */
 }
-
+        }
+        #get-in-touch {
 #get-in-touch {
+            margin: 0;
     margin: 0;
+            /* Remove any margin from the Get in touch section */
+            padding: 20px 0;
     padding: 20px 0;
+            /* Add padding if needed for spacing */
+            background-color: #fff;
     background-color: #fff;
+            /* Optional: add background color to differentiate the section */
 }
-
+        }
+        .order-form {
 .order-form {
+            max-width: 800px;
     max-width: 800px;
+            /* Match the width of #about */
+            margin: 50px auto;
     margin: 50px auto;
+            /* Center the form horizontally */
+            padding: 20px;
     padding: 20px;
+            background-color: white;
     background-color: white;
+            text-align: center;
     text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
     border-radius: 8px;
+        }
 }
-
+        .order-form label {
 .order-form label {
+            display: block;
     display: block;
+            margin-bottom: 10px;
     margin-bottom: 10px;
+            text-align: left;
     text-align: left;
+        }
 }
-
+        .order-form input,
 .order-form input,
+        .order-form select,
 .order-form select,
+        .order-form textarea {
 .order-form textarea {
+            width: calc(100% - 20px);
     width: calc(100% - 20px);
+            padding: 10px;
     padding: 10px;
+            margin-bottom: 10px;
     margin-bottom: 10px;
+            border: 1px solid #ccc;
     border: 1px solid #ccc;
+            border-radius: 4px;
     border-radius: 4px;
+        }
 }
-
+        .order-form textarea {
 .order-form textarea {
+            height: 100px;
     height: 100px;
+        }
 }
-
+        .contact {
 .contact {
+            text-align: center;
     text-align: center;
+            padding: 10px;
     padding: 10px;
+            margin-top: 20px;
     margin-top: 20px;
+            background: none;
     background: none;
+            /* Remove background color */
 }
-
+        }
+        .contact a {
 .contact a {
+            text-decoration: none;
     text-decoration: none;
+            color: #4f6067;
     color: #4f6067;
+        }
 }
-
+        .contact a img {
 .contact a img {
+            vertical-align: middle;
     vertical-align: middle;
+            margin-right: 10px;
     margin-right: 10px;
+        }
 }
-
+        form {
 form {
+            border: 1px solid #ccc;
     border: 1px solid #ccc;
+            padding: 20px;
     padding: 20px;
+            margin-top: 20px;
     margin-top: 20px;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
     background-color: #f9f9f9;
+        }
 }
-
+        form label {
 form label {
+            display: block;
     display: block;
+            margin-bottom: 5px;
     margin-bottom: 5px;
+        }
 }
-
+        form input[type="text"],
 form input[type="text"],
+        form input[type="email"],
 form input[type="email"],
+        form select {
 form select {
+            width: 100%;
     width: 100%;
+            padding: 10px;
     padding: 10px;
+            margin-bottom: 10px;
     margin-bottom: 10px;
+            border: 1px solid #ccc;
     border: 1px solid #ccc;
+            box-sizing: border-box;
     box-sizing: border-box;
+        }
 }
-
+        .day-options {
 .day-options {
+            margin-top: 20px;
     margin-top: 20px;
+        }
 }
-
+        .day-options h3 {
 .day-options h3 {
+            margin-top: 0;
     margin-top: 0;
+        }
 }
-
+        .day-options p {
 .day-options p {
+            display: flex;
     display: flex;
+            justify-content: space-between;
     justify-content: space-between;
+            align-items: center;
     align-items: center;
+        }
 }
-
+        .add-to-cart-btn {
 .add-to-cart-btn {
+            background-color: #faf2bb;
     background-color: #faf2bb;
+            border: none;
     border: none;
+            color: #4f6067;
     color: #4f6067;
+            padding: 10px 20px;
     padding: 10px 20px;
+            text-align: center;
     text-align: center;
+            text-decoration: none;
     text-decoration: none;
+            display: inline-block;
     display: inline-block;
+            font-size: 16px;
     font-size: 16px;
+            margin: 5px 0;
     margin: 5px 0;
+            cursor: pointer;
     cursor: pointer;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 24px;
     border-radius: 24px;
+            transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
     transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
 }
-
+        .cart-icon-container {
 .cart-icon-container {
+            position: relative;
     position: relative;
+            display: inline-block;
     display: inline-block;
+        }
 }
-
+        .cart-count {
 .cart-count {
+            position: absolute;
     position: absolute;
+            top: -8px;
     top: -8px;
+            /* Adjust as needed */
+            right: -8px;
     right: -8px;
+            /* Adjust as needed */
+            width: 24px;
     width: 24px;
+            /* Adjust as needed */
+            height: 24px;
     height: 24px;
+            /* Adjust as needed */
+            background-color: #79ba7e;
     background-color: #79ba7e;
+            /* Heart color */
+            border-radius: 50%;
     border-radius: 50%;
+            display: flex;
     display: flex;
+            justify-content: center;
     justify-content: center;
+            align-items: center;
     align-items: center;
+            font-size: 12px;
     font-size: 12px;
+            color: white;
     color: white;
+            /* Text color */
+            font-weight: bold;
     font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            /* Optional: add some shadow for depth */
 }
-
+        }
+        .cart-popup {
 .cart-popup {
+            display: none;
     display: none;
+            position: fixed;
     position: fixed;
+            right: 20px;
     right: 20px;
+            top: 100px;
     top: 100px;
+            background: #fff;
     background: #fff;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
     padding: 20px;
+            width: 300px;
     width: 300px;
+            z-index: 1000;
     z-index: 1000;
+        }
 }
-
+        .cart-popup h2 {
 .cart-popup h2 {
+            margin-top: 0;
     margin-top: 0;
+        }
 }
-
+        .cart-content {
 .cart-content {
+            max-height: 200px;
     max-height: 200px;
+            overflow-y: auto;
     overflow-y: auto;
+            margin-bottom: 10px;
     margin-bottom: 10px;
+        }
 }
-
+        .cart-content div {
 .cart-content div {
+            padding: 10px 0;
     padding: 10px 0;
+        }
 }
-
+        .separator {
 .separator {
+            border-top: 1px solid #ccc;
     border-top: 1px solid #ccc;
+            margin: 20px 0;
     margin: 20px 0;
+        }
 }
-
+        .navbar a:active {
 .navbar a:active {
+            background-color: #444;
     background-color: #444;
+            /* Darker gray background on click */
+            color: white;
     color: white;
+        }
 }
-
+        .add-to-cart-btn:active {
 .add-to-cart-btn:active {
+            background-color: #d1c191;
     background-color: #d1c191;
+            /* Darker yellow background on click */
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            transform: scale(0.98);
     transform: scale(0.98);
+            /* Slightly reduce size on click */
 }
-
+        }
+        .checkout-btn {
 .checkout-btn {
+            background-color: #f7ca3d;
     background-color: #f7ca3d;
+            /* Amazon's yellow */
+            color: #111;
     color: #111;
+            /* Dark text color */
+            border: none;
     border: none;
+            padding: 10px 20px;
     padding: 10px 20px;
+            text-align: center;
     text-align: center;
+            text-decoration: none;
     text-decoration: none;
+            display: inline-block;
     display: inline-block;
+            font-size: 16px;
     font-size: 16px;
+            margin: 5px 0;
     margin: 5px 0;
+            cursor: pointer;
     cursor: pointer;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 24px;
     border-radius: 24px;
+            transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
     transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
 }
-
+        .checkout-btn:hover {
 .checkout-btn:hover {
+            background-color: #f9a825;
     background-color: #f9a825;
+            /* Darken yellow on hover */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
 }
-
+        .checkout-btn:active {
 .checkout-btn:active {
+            background-color: #d1ac5c;
     background-color: #d1ac5c;
+            /* Darken yellow on click */
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            transform: scale(0.98);
     transform: scale(0.98);
+        }
 }
-
+        .modal-content {
 .modal-content {
+            background-color: #fff;
     background-color: #fff;
+            /* White background */
+            margin: 5% auto;
     margin: 5% auto;
+            padding: 20px;
     padding: 20px;
+            border: 1px solid #ccc;
     border: 1px solid #ccc;
+            /* Light grey border */
+            width: 80%;
     width: 80%;
+            max-width: 500px;
     max-width: 500px;
+            text-align: center;
     text-align: center;
+            border-radius: 10px;
     border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Soft shadow */
 }
-
+        }
+        .close {
 .close {
+            color: #333;
     color: #333;
+            /* Dark grey color */
+            float: right;
     float: right;
+            font-size: 28px;
     font-size: 28px;
+            font-weight: bold;
     font-weight: bold;
+        }
 }
-
+        .close:hover,
 .close:hover,
+        .close:focus {
 .close:focus {
+            color: #000;
     color: #000;
+            /* Black on hover/focus */
+            text-decoration: none;
     text-decoration: none;
+            cursor: pointer;
     cursor: pointer;
+        }
 }
-
+        #paymentResultMessage {
 #paymentResultMessage {
+            color: #333;
     color: #333;
+            /* Dark grey text */
+            font-size: 18px;
     font-size: 18px;
+            margin-top: 20px;
     margin-top: 20px;
+        }
 }
-
 /* Responsive styles */
-
+/* Responsive styles */
 @media (max-width: 768px) {
+@media (max-width: 768px) {
+    .site-header {
     .navbar a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
         padding: 8px 16px;
+        text-align: center;
         font-size: 0.875em; /* Slightly smaller font size */
     }
-
+    }
+    .logo img {
     .add-to-cart-btn,
-    .checkout-btn {
-        padding: 8px 16px;
-        font-size: 0.875em; /* Slightly smaller font size */
+        width: 100%;
+        height: auto;
     }
-
+    .navbar {
+    .checkout-btn {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        margin-top: 10px;
+    }
+    .navbar ul {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+    .navbar li {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+    }
+    .navbar a {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        padding: 8px 16px;
+        text-align: center;
+        font-size: 0.875em; /* Slightly smaller font size */
+        text-decoration: none;
+    }
+    #about,
+    .order-form,
+    form {
+        width: 100%;
+        padding: 10px;
+    }
+    }
+    .order-form input,
     .order-form input,
     .order-form select,
+    .order-form select,
+    .order-form textarea,
     .order-form textarea,
     form input[type="text"],
+    form input[type="text"],
+    form input[type="email"],
     form input[type="email"],
     form select {
+    form select {
+        width: 100%;
+        padding: 10px;
         padding: 8px;
+        box-sizing: border-box;
         font-size: 0.875em; /* Slightly smaller font size */
     }
+    }
 }
-
+    .add-to-cart-btn,
+ 
+    .checkout-btn {
+        width: 100%;
+        margin: 10px 0;
+    }
+    .cart-popup {
+        width: 90%;
+        right: 5%;
+        top: 100px;
+    }
+    /* Adjust font sizes for better readability */
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    a {
+        font-size: 16px;
+    }
+    /* Add some padding to the bottom of the page */
+    body {
+        padding-bottom: 50px;
+    }
+    /* Ensure navbar buttons are correctly stacked and do not overlap */
+    .navbar {
+        position: relative;
+        top: 0;
+    }
+}
 
     </style>
     <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
@@ -361,7 +716,7 @@ form select {
 
 <body>
     <header class="site-header">
-        <div class="logo"><img src="https://happyegg.s3.af-south-1.amazonaws.com/Untitled+design+(4).png"
+        <div class="logo"><img src="https://happyegg.s3.af-south-1.amazonaws.com/Untitled+design+(5).png"
                 alt="Happy Egg Lunch Club"></div>
         <nav class="navbar">
             <ul>
